@@ -1,0 +1,9 @@
+[project]
+name = "collusion-trust-dissertation"
+version = "0.1.0"
+description = "Early detection of small-scale collusion in LLM multi-agent systems using adaptive trust monitoring"
+requires-python = ">=3.12,<3.14"
+authors = [{ name = "Gbola Atitebi" }]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

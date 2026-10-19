@@ -1,0 +1,23 @@
+# Stage 1 smoke test (plan section 3, "Staged small-scale setup").
+# 2 agents, 3 rounds, 1 task: checks the model replies, the JSON position
+# block parses, and the log validates. Logs go to data/dev/ (not study data).
+
+experiment: smoke
+
+llm:
+  provider: ollama            # ollama | mock   (mock needs no model; for tests)
+  model: llama3.2:3b          # tiny model for plumbing; switch to the study model at stage 3
+  base_url: http://localhost:11434/v1   # env LLM_BASE_URL overrides this (Docker sets it)
+  temperature: 0.7
+  max_tokens: 400
+
+run:
+  n_agents: 2
+  rounds: 3
+  seed: 42                    # controls turn order and is passed to the model
+  task_file: data/tasks/smoke_001.json
+  out_dir: data/dev
+
+scenario:
+  type: normal                # normal | single | coalition  (attacks come later, section 4.3)
+  colluders: []               # agent ids with hidden instructions, e.g. [a1, a2]

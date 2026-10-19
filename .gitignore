@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Secrets (never commit)
+.env
+OAI_CONFIG_LIST
+
+# Run logs and derived data: too large for Git. Back up weekly; archive on OSF/Zenodo at the end.
+data/raw/*
+data/dev/*
+data/processed/*
+!data/**/.gitkeep
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

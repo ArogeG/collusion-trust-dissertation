@@ -1,0 +1,14 @@
+# Direct dependencies (what the code imports). Exact versions of everything,
+# including sub-dependencies, are in requirements.lock.txt -- install from that
+# file for study runs so nothing drifts (AutoGen is in maintenance mode).
+autogen-agentchat==0.7.5
+autogen-ext[openai]==0.7.5
+pydantic==2.13.5
+PyYAML==6.0.3
+pytest==9.1.1
+
+# Added later, as the plan reaches each stage (then re-run: uv pip freeze > requirements.lock.txt)
+# Analysis (section 6):  pandas numpy pyarrow duckdb scipy statsmodels pingouin scikit-learn imbalanced-learn matplotlib seaborn
+# Agreement by embeddings (optional):  sentence-transformers
+# CrewAI replication subset (decision 4):  crewai
+# AgentOps logging (named in Chapter 3):  agentops

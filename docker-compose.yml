@@ -1,0 +1,15 @@
+# docker compose build
+# docker compose run --rm sim                                   # smoke test against Ollama on the host
+# docker compose run --rm sim python -m src.sim.run --config configs/small.yaml --mock
+# docker compose run --rm sim python -m pytest -q
+services:
+  sim:
+    build: .
+    image: collusion-trust:dev        # retag as collusion-trust:v1-frozen at the parameter freeze
+    volumes:
+      - ./data:/app/data              # logs are written to your disk, not inside the container
+      - ./configs:/app/configs
+    environment:
+      - LLM_BASE_URL=http://host.docker.internal:11434/v1
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # needed on Linux; harmless on Mac/Windows
